@@ -1,7 +1,9 @@
 package com.example.amanzholt.lesson3
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -20,7 +22,13 @@ class CategoryFragment : Fragment() {
         }
 
         val categoryRecycler = root.findViewById(R.id.categoryRecycler) as RecyclerView
-        categoryRecycler.layoutManager = LinearLayoutManager(activity)
+
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            categoryRecycler.layoutManager = GridLayoutManager(activity, 2)
+        } else {
+            categoryRecycler.layoutManager = LinearLayoutManager(activity)
+        }
+
         categoryRecycler.adapter = NewsAndCategoryAdapter(activity!!, dataset)
 
         return root
