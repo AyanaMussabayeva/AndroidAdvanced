@@ -16,11 +16,11 @@ class AddNewsActivity : AppCompatActivity() {
 
             //added current time, when posting news
             val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-            val currentDate = sdf.format(Date())
+            val myDate = sdf.format(Date())
 
             val title = titleEditText.text.toString()
             val description = desccriptinEditText.text.toString()
-            val news = News(0, title, currentDate, description) 
+            val news = News(0, title, myDate, description)
 
             setResult(Activity.RESULT_OK, Intent()
                     .putExtra("news", news))
